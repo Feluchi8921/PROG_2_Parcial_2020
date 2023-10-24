@@ -59,4 +59,13 @@ public class Paciente {
         return false;
     }
 
+    //Metodo agregar sintoma
+    public void addSintoma(String sintoma){
+        sintomas.add(sintoma);
+    }
+
+    //Metodo agregar equipamiento
+    public void addEquipamiento(String equipamiento){
+        equipamientos.add(equipamiento);
+    }
 }

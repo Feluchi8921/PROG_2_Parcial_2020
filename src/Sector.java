@@ -18,12 +18,13 @@ public class Sector extends Componente{
         componentes.remove(componente);
     }
 
-    public Componente getComponente(int posicion){
-        for(int i=0; i<componentes.size();i++){
-            componentes.get(posicion);
-            return componentes.get(i);
+   @Override
+   public ArrayList<Cama> listarCamasDisponibles(Paciente paciente){
+        ArrayList<Cama> listarCamas = new ArrayList<>();
+        for(Componente c : componentes){
+                listarCamas.addAll(c.listarCamasDisponibles(paciente));
+            }
+        return listarCamas;
         }
-        return null;
-    }
+   }
 
-}

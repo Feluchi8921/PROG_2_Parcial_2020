@@ -6,6 +6,8 @@ public class Cama extends Componente {
     private int idCama;
     private boolean ocupada = false;
     private ArrayList<String> equipamientos;
+    //Atributo filtro Strategy
+    private CondicionBusqueda condicion;
 
     //Constructor
     public Cama(boolean ocupada) {
@@ -28,6 +30,14 @@ public class Cama extends Componente {
         this.ocupada = ocupada;
     }
 
+    public CondicionBusqueda getCondicion() {
+        return condicion;
+    }
+
+    public void setCondicion(CondicionBusqueda condicion) {
+        this.condicion = condicion;
+    }
+
     public void addEquipamiento(String equipamiento) {
         equipamientos.add(equipamiento);
     }
@@ -46,5 +56,15 @@ public class Cama extends Componente {
             }
         }
         return false;
+    }
+@Override
+    public ArrayList<Cama> listarCamasDisponibles(Paciente paciente){
+        //Creo una copia
+        ArrayList<Cama> listaCamasDisponibles = new ArrayList<>();
+        //Para que un paciente pueda ocupar una cama debe estar desocupada y el paciente debe cumplir la condicion
+        if(this.isOcupada() && condicion.cumple(paciente)){
+            listaCamasDisponibles.add(this);
+        }
+        return listaCamasDisponibles;
     }
 }
