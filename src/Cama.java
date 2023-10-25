@@ -57,7 +57,7 @@ public class Cama extends Componente {
         }
         return false;
     }
-@Override
+    @Override
     public ArrayList<Cama> listarCamasDisponibles(Paciente paciente){
         //Creo una copia
         ArrayList<Cama> listaCamasDisponibles = new ArrayList<>();
@@ -67,4 +67,16 @@ public class Cama extends Componente {
         }
         return listaCamasDisponibles;
     }
+    @Override
+    public Componente copiar() {
+        return new Cama(ocupada);
+    }
+    @Override
+    public Componente copiar(CondicionBusqueda condicion, Paciente paciente){
+        if (condicion.cumple(paciente)) {
+            return new Cama(ocupada);
+        }
+        return null; // Devuelve null si no se permite copiar el elemento.
+    }
+
 }

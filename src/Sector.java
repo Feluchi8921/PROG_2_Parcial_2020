@@ -26,5 +26,27 @@ public class Sector extends Componente{
             }
         return listarCamas;
         }
+    @Override
+    public Componente copiar() {
+        Sector copiaCarpeta = new Sector();
+        for (Componente elemento : componentes) {
+            Componente copiaElemento = elemento.copiar();
+            copiaCarpeta.addComponente(copiaElemento);
+        }
+        return copiaCarpeta;
+    }
+
+    @Override
+    public Componente copiar(CondicionBusqueda condicion, Paciente paciente) {
+        Sector copiaCarpeta = new Sector();
+        for (Componente elemento : componentes) {
+            Componente copiaElemento = elemento.copiar();
+            if (copiaElemento != null) {
+                copiaCarpeta.addComponente(copiaElemento);
+            }
+        }
+        return copiaCarpeta;
+    }
+
    }
 
